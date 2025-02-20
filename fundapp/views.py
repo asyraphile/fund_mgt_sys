@@ -39,4 +39,16 @@ class FundViewset(viewsets.ViewSet):
                 'message': f'Fund creation failed due to {e}'
             }
             return Response(response, status=status.HTTP_404_NOT_FOUND)
+            
+    # Endpoint to retrieve details of a specific fund using its ID     
+    def retrieve(self, request, pk=None):
+        try:
+            queryset = self.queryset.filter(pk=pk).first()
+            serializer = self.serializer_class(queryset, many=False)
+            return Response(serializer.data)
+        except Exception as e:
+            response = {
+                'message': f'Fund retrieval failed due to {e}'
+            }
+            return Response(response, status=status.HTTP_404_NOT_FOUND)
         
