@@ -1,6 +1,9 @@
 from django.db import models
 import uuid
 # Create your models here.
+"""
+TASK 1: Data Model Design Create a Python class for representing an investment fund
+"""
 class Fund(models.Model):
     id = models.UUIDField(primary_key=True, unique=True, editable=False, default=uuid.uuid4, verbose_name="Fund ID")
     name = models.CharField(max_length=255, verbose_name="Fund Name")
