@@ -67,3 +67,13 @@ class FundViewset(viewsets.ViewSet):
         except Exception as e:
             response = {'message': f'Fund update failed due to {e}'}
             return Response(response, status=status.HTTP_404_NOT_FOUND)
+    # Endpoint to delete a fund using its ID    
+    def destroy(self, request, pk=None):
+        queryset = self.queryset
+        try:
+            queryset.filter(pk=pk).delete()
+            response = {'message': 'Fund delete successfully'}
+            return Response(response)
+        except Exception as e:
+            response = {'message': 'Fund deletion failed', 'data': f'{e}'}
+            return Response(response, status=status.HTTP_404_NOT_FOUND)
