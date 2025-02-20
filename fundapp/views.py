@@ -23,3 +23,20 @@ class FundViewset(viewsets.ViewSet):
             }
             return Response(response, status=status.HTTP_404_NOT_FOUND)
         
+    # Endpoint to create a new fund 
+    def create(self, request):
+        try:
+            serializer = self.get_serializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            self.perform_create(serializer)
+            response = {
+                'message': 'Fund created successfully',
+                'data': serializer.data
+            }
+            return Response(response, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            response = {
+                'message': f'Fund creation failed due to {e}'
+            }
+            return Response(response, status=status.HTTP_404_NOT_FOUND)
+        
