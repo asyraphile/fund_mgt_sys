@@ -13,3 +13,5 @@ class Fund(models.Model):
     performance = models.DecimalField(decimal_places=2, max_digits=6, verbose_name="Fund Performance(%)")
     created_at = models.DateField(auto_now_add=True, editable=False, verbose_name="Fund Date of Creation")
     
+    def __str__(self):
+        return self.name
