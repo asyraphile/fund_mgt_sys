@@ -9,7 +9,7 @@ class Fund(models.Model):
     name = models.CharField(max_length=255, verbose_name="Fund Name")
     manager_name = models.CharField(max_length=255, verbose_name="Fund Manager Name")
     description = models.TextField(default="", verbose_name="Fund Description")
-    nav = models.DecimalField(decimal_places=2, verbose_name="Fund Net Asset Value")
-    performance = models.DecimalField(decimal_places=2, verbose_name="Fund Performance(%)")
+    nav = models.DecimalField(decimal_places=2, max_digits=20, verbose_name="Fund Net Asset Value")
+    performance = models.DecimalField(decimal_places=2, max_digits=6, verbose_name="Fund Performance(%)")
     created_at = models.DateField(auto_now_add=True, editable=False, verbose_name="Fund Date of Creation")
     
