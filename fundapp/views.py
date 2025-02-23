@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from rest_framework import viewsets, status, mixins
+from rest_framework import viewsets, status
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from rest_framework.exceptions import ValidationError
 from .serializers import FundSerializer
 from .models import Fund
@@ -9,71 +10,71 @@ TASK 2: REST API Development Using Python and a web framework of your choice (e.
 manage investment funds.
 """
 
-class FundViewset(viewsets.ViewSet):
-    queryset = Fund.objects.all()
-    serializer_class = FundSerializer
-    # Endpoint to retrieve a list of all funds 
-    def list(self, request):
-        queryset = self.queryset
-        try:
-            serializer = FundSerializer(queryset, many=True)
-            return Response(serializer.data)
-        except Exception as e:
-            response = {'message': f'Fund retrieval failed due to {e}'}
-            return Response(response, status=status.HTTP_404_NOT_FOUND)
-        
-    # Endpoint to create a new fund 
-    def create(self, request):
-        try:
-            serializer = FundSerializer(data=request.data)
+@api_view(['GET'])
+def get_all(request):
+    funds = Fund.objects.all()
+    serializer = FundSerializer(funds, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def get_fund(request, id):
+    try:
+        fund = Fund.objects.get(id=id)
+        serializer = FundSerializer(fund, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except Fund.DoesNotExist:
+        return Response({'message': f'Fund with id {id} not found.'}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({'message': f'An error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+@api_view(['POST'])
+def create_fund(request):
+    try:
+        serializer = FundSerializer(data=request.data)
+        # validate serializer
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        response = {
+            'message': 'Fund created successfully',
+            'data': serializer.data
+        }
+        return Response(response, status=status.HTTP_201_CREATED)
+    except ValidationError as ve:
+        return Response({'message': str(ve)}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        return Response({'message': f'An error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+@api_view(['PUT'])
+def update_performance_by_id(request, id):
+    try:
+        fund = Fund.objects.get(id=id)
+        # filter for performance in request data
+        if 'performance' not in request.data:
+            raise Exception('Incorrect parameter given.')
+        # raise exception if there are more than one key in request data
+        elif len(list(request.data.keys())) > 1:
+            raise Exception('Only performance parameter will be accepted.')
+        else:
+            serializer = FundSerializer(fund, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
             serializer.save()
-            response = {
-                'message': 'Fund created successfully',
-                'data': serializer.data
-            }
-            return Response(response, status=status.HTTP_201_CREATED)
-        except Exception as e:
-            response = {'message': f'Fund creation failed due to {e}'}
-            return Response(response, status=status.HTTP_404_NOT_FOUND)
-            
-    # Endpoint to retrieve details of a specific fund using its ID     
-    def retrieve(self, request, pk=None):
-        try:
-            queryset = self.queryset.filter(pk=pk).first()
-            if not queryset:
-                raise ValidationError(f"Fund with id {str(pk)} not found.")
-            serializer = self.serializer_class(queryset, many=False)
-            return Response(serializer.data)
-        except ValidationError as ve:
-            return Response({'message': str(ve)}, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            response = {'message': f'Fund retrieval failed due to {e}'}
-            return Response(response, status=status.HTTP_404_NOT_FOUND)
-    # Endpoint to update the performance of a fund using its ID     
-    def put(self, request, id):
-        try:
-            if 'fund_performance' not in request.data:
-                raise ValidationError("The 'fund_performance' field is required.")
-            instance = self.queryset.filter(pk=id).first()
-            if len(instance) < 1:
-                raise ValidationError(f"Fund with id {str(id)} not found.")
-            serializer = FundSerializer(instance, data=request.data, partial=True)
-            serializer.is_valid(raise_exception=True)
-            serializer.update(serializer)
             return Response(serializer.data, status=status.HTTP_200_OK)
-        except ValidationError as ve:
-            return Response({'message': str(ve)}, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            response = {'message': f'Fund update failed due to {e}'}
-            return Response(response, status=status.HTTP_404_NOT_FOUND)
-    # Endpoint to delete a fund using its ID    
-    def delete(self, request, pk):
-        queryset = self.queryset
-        try:
-            queryset.filter(pk=pk).delete()
-            response = {'message': 'Fund delete successfully'}
-            return Response(response)
-        except Exception as e:
-            response = {'message': 'Fund deletion failed', 'data': f'{e}'}
-            return Response(response, status=status.HTTP_404_NOT_FOUND)
+    except ValidationError as ve:
+        return Response({'message': str(ve)}, status=status.HTTP_400_BAD_REQUEST)
+    except Fund.DoesNotExist:
+        return Response({'message': f'Fund with id {id} not found.'}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({'message': f'An error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+@api_view(['DELETE'])
+def delete_fund_by_id(request, id):
+    try:
+        fund = Fund.objects.get(id=id)
+        fund.delete()
+        response = {
+            'message': 'Fund deleted successfully',
+        }
+        return Response(response, status=status.HTTP_200_OK)
+    except Fund.DoesNotExist:
+        return Response({'message': f'Fund with id {id} not found.'}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({'message': f'An error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
