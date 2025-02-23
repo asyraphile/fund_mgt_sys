@@ -67,7 +67,7 @@ This endpoint will create fund based on the data given in request body.<br/>
 This endpoint will update performance of the fund by id given in the parameter. Please replace the id of the fund existing/newly created fund in endpoint 1 or endpoint 3.<br/>
 <b>Sample Request</b>: http://localhost:8000/update_performance/58231c71-8b97-4a1d-9184-adfedfe53038/ <br/>METHOD: PUT<br/>
 <b>Sample Body(json)</b>: <br/>
-![alt text](image_5.png) <br/>
+![alt text](screenshots/image_5.png) <br/>
 <b>Sample Response</b>: <br/>
-![alt text](screenshots/image_4.png) <br/>
+![alt text](screenshots/image_6.png)<br/>
 5. http://localhost:8000/delete/fund-id/ on DELETE
