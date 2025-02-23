@@ -35,20 +35,19 @@ Task 8: Documentation Provide clear and concise documentation for the API and th
 ## Usage
 Please make sure that you have started the server before using these endpoint by running "python manage.py runserver".
 
-Once the server is running, this will be displayed in the terminal:
-<br/>
-System check identified no issues (0 silenced).<br>
-February 23, 2025 - 13:45:26
-Django version 5.1.6, using settings 'fundms.settings'
-Starting development server at http://127.0.0.1:8000/
-Quit the server with CTRL-BREAK.
+Once the server is running, this will be displayed in the terminal:<br/>
+System check identified no issues (0 silenced).<br/>
+February 23, 2025 - 13:45:26<br/>
+Django version 5.1.6, using settings 'fundms.settings'<br/>
+Starting development server at http://127.0.0.1:8000/<br/>
+Quit the server with CTRL-BREAK.<br/>
 
 1. http://localhost:8000/all/ - List all funds
 ### How to interact:
 This endpoint will display all funds that have been registered into the database.
 Sample Request:
 Sample Response:
-2. http://localhost:8000/fund/<id>/ on GET
+2. http://localhost:8000/fund/"<id>"/ on GET
 3. http://localhost:8000/create/ on POST
 4. http://localhost:8000/update_performance/<id>/ on PUT
 5. http://localhost:8000/delete/<id>/
