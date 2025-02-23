@@ -4,7 +4,10 @@ from decimal import Decimal
 from datetime import date
 import uuid
 # Create your tests here.
-
+"""
+Task 7: Testing Write test cases to ensure the proper functioning of both the API endpoints and the SQL database. The tests should 
+cover various scenarios and edge cases, including testing the SQL queries and verifying data integrity in the database.
+"""
 class FundTestCase(TestCase):
     test_fund = Fund
     def setUp(self):
@@ -14,7 +17,7 @@ class FundTestCase(TestCase):
                                             nav=190000,
                                             performance=5.55,
                                             created_at='2025-02-01')
-    """UNIT TESTS FOR MODELS"""    
+    """UNIT TESTS FOR MODELS >> SQL DATABASE"""    
     def test_fund_creation(self):
         fund = Fund.objects.get(name="Pension Fund for test")
         self.assertIsNotNone(fund)
@@ -30,7 +33,7 @@ class FundTestCase(TestCase):
     def test_fund_str_representation(self):
         fund = Fund.objects.get(name="Pension Fund for test")
         self.assertEqual(str(fund), "Pension Fund for test") 
-    """UNIT TESTS FOR VIEWS/API"""  
+    """UNIT TESTS FOR VIEWS/API >> API ENDPOINTS"""  
     def test_view_list(self):
         response = self.client.get('/all/')
         # asserting the response status code to 200.
@@ -42,6 +45,22 @@ class FundTestCase(TestCase):
         self.assertEqual(response.status_code, 200) 
         # asserting self test fund's name to response's name
         self.assertEqual(response.json()['name'], self.test_fund.name)
+
+    def test_view_create(self):
+        # create a mock data for this test only
+        test_data = {
+            "name": "Fund Number 888",
+            "manager_name": "Ahmad Asyraf",
+            "description": "Fund for Testing purposes",
+            "nav": "11000.00",
+            "performance": "35.00"
+        }
+        response = self.client.post('/create/',
+                                    test_data,
+                                    content_type='application/json')
+        # asserting the response status code to 200.
+        self.assertEqual(response.status_code, 201) 
+        self.assertEqual(response.json()['message'], 'Fund created successfully')
 
     def test_view_put(self):
         # updating description by concatenating 1 at the back, performance has to be in 2 decimal places
