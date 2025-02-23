@@ -47,17 +47,7 @@ Quit the server with CTRL-BREAK.<br/>
 This endpoint will display all funds that have been registered into the database.
 Sample Request: http://localhost:8000/all/ <br/>
 Sample Response: <br/>
-[<br/>
-    {<br/>
-        "id": "f3903f1f-03eb-4a7e-bd79-8ef3f3c83034",<br/>
-        "name": "Fund Number 1",<br/>
-        "manager_name": "Asyraf",<br/>
-        "description": "Fund for Testing purposes",<br/>
-        "nav": "1000.00",<br/>
-        "performance": "50.00",<br/>
-        "created_at": "2025-02-22"<br/>
-    }<br/>
-]<br/>
+![alt text](screenshots/image.png)
 2. http://localhost:8000/fund/fund-id/ on GET
 3. http://localhost:8000/create/ on POST
 4. http://localhost:8000/update_performance/fund-id/ on PUT
