@@ -45,9 +45,9 @@ Quit the server with CTRL-BREAK.<br/>
 1. http://localhost:8000/all/ - List all funds
 ### How to interact:
 This endpoint will display all funds that have been registered into the database.<br/>
-Sample Request: http://localhost:8000/all/ METHOD: GET<br/>
-Sample Response: <br/>
-![alt text](screenshots/image.png)
+<b>Sample Request</b>: http://localhost:8000/all/ METHOD: GET<br/>
+<b>Sample Response</b>: <br/>
+![alt text](screenshots/image.png)<br/>
 2. http://localhost:8000/fund/fund-id/ on GET
 3. http://localhost:8000/create/ on POST
 4. http://localhost:8000/update_performance/fund-id/ on PUT
