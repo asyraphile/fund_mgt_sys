@@ -13,6 +13,7 @@ Task 8: Documentation Provide clear and concise documentation for the API and th
 
  - [Installation](#Installation)
  - [API Endpoints](#api-endpoints)
+ - [Usage](#usage)
  - [Run Unit Test](#unit-tests)
 
 ## Installation
@@ -32,6 +33,7 @@ Task 8: Documentation Provide clear and concise documentation for the API and th
 3. http://localhost:8000/create/ on POST
 4. http://localhost:8000/update_performance/fund-id/ on PUT
 5. http://localhost:8000/delete/fund-id/ on DELETE
+
 ## Usage
 Please make sure that you have started the server before using these endpoint by running "python manage.py runserver". You may use Postman or Curl to run these endpoints.
 
@@ -62,7 +64,7 @@ This endpoint will create fund based on the data given in request body.<br/>
 ![alt text](screenshots/image_3.png) <br/>
 <b>Sample Response</b>: <br/>
 ![alt text](screenshots/image_4.png) <br/>
-### http://localhost:8000/update_performance/fund-id/ - Update performance of fund by Id
+### 4. http://localhost:8000/update_performance/fund-id/ - Update performance of fund by Id
 ### How to interact:
 This endpoint will update performance of the fund by id given in the parameter. Please replace the id of the fund existing/newly created fund in endpoint 1 or endpoint 3.<br/>
 <b>Sample Request</b>: http://localhost:8000/update_performance/58231c71-8b97-4a1d-9184-adfedfe53038/ <br/>METHOD: PUT<br/>
@@ -70,4 +72,9 @@ This endpoint will update performance of the fund by id given in the parameter. 
 ![alt text](screenshots/image_5.png) <br/>
 <b>Sample Response</b>: <br/>
 ![alt text](screenshots/image_6.png)<br/>
-5. http://localhost:8000/delete/fund-id/ on DELETE
+### 2. 5. http://localhost:8000/delete/fund-id/ - Delete Fund by Id
+### How to interact:
+This endpoint will delete the fund by id provided in the parameter. Please replace the uuid with the existing id in endpoint 1 or 3.<br/>
+<b>Sample Request</b>: http://localhost:8000/delete/58231c71-8b97-4a1d-9184-adfedfe53038/ <br/>METHOD: DELETE<br/>
+<b>Sample Response</b>: <br/>
+![alt text](screenshots/image_7.png) <br/>
