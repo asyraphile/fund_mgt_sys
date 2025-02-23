@@ -2,13 +2,15 @@
 # Fund Management System
 The purpose of this assessment is to evaluate the candidate's proficiency as a backend developer with a focus on Python and their understanding of building and working  with RESTful APIs. The assessment aims to assess the candidate's ability to design, develop, and maintain scalable and efficient backend solutions for a fund management  company.
 For each task, please access these files to evaluate:<br/>
-Task 1: [a relative link](https://github.com/asyraphile/fund_mgt_sys/blob/main/fundapp/models.py) fundapp/model
-<br/>
+Task 1: [fundapp/models.py](https://github.com/asyraphile/fund_mgt_sys/blob/main/fundapp/models.py) <br/>
+Task 2: [fundapp/views.py](https://github.com/asyraphile/fund_mgt_sys/blob/main/fundapp/views.py) <br/>
+Task 3: Installation step 6 <br/>
+Task 4: In Django, it is not needed to use SQL statements to create tables and relationships in database as it is done in Task 1 and Installation step 6. But I have prepared an SQL statements if you still need it. Refer to task4.sql in this repository. <br/>
+Task 5: Please ensure you have completed all installation steps and refer to task5.sql in this repository to manually insert data into the table. <br/>
+Task 6: [fundapp/views.py](https://github.com/asyraphile/fund_mgt_sys/blob/main/fundapp/views.py) <br/>
+Task 7: [fundapp/tests.py](https://github.com/asyraphile/fund_mgt_sys/blob/main/fundapp/tests.py)
+<br/><br/>
 Please note that for this assessment I will be using only development server to run the system.
-
-
-
-
 
 ## Acknowledgements
 Task 8: Documentation Provide clear and concise documentation for the API and the SQL database, including how to interact with each endpoint, SQL schema, and sample requests and responses.
@@ -25,7 +27,8 @@ Task 8: Documentation Provide clear and concise documentation for the API and th
 3. Create a virtual environment by running "python -m venv venv"
 4. Once venv is created, run ".\venv\Scripts\activate" to activate the virtual environment.
 5. Install required libraries to run the system by running "pip install -r requirements.txt".
-6. Run "python manage.py runserver" to start the development server.
+6. Run "python manage.py migrate" to migrate changes. This will create db.sqlite3 in your local computer and create tables in the database.
+7. Run "python manage.py runserver" to start the development server.
 
 
 ## API Endpoints
