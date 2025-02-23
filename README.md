@@ -48,7 +48,12 @@ This endpoint will display all funds that have been registered into the database
 <b>Sample Request</b>: http://localhost:8000/all/ METHOD: GET<br/>
 <b>Sample Response</b>: <br/>
 ![alt text](screenshots/image.png)<br/>
-2. http://localhost:8000/fund/fund-id/ on GET
+2. http://localhost:8000/fund/fund-id/ - Get Fund by Id
+### How to interact:
+This endpoint will display a specific fund by id provided in the parameter. Please replace the uuid with the id provided in endpoint 1.<br/>
+<b>Sample Request</b>: http://localhost:8000/fund/f3903f1f-03eb-4a7e-bd79-8ef3f3c83034/ METHOD: GET<br/>
+<b>Sample Response</b>: <br/>
+![alt text](screenshots/image_2.png) <br/>
 3. http://localhost:8000/create/ on POST
 4. http://localhost:8000/update_performance/fund-id/ on PUT
 5. http://localhost:8000/delete/fund-id/ on DELETE
