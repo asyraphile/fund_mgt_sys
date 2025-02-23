@@ -1,6 +1,6 @@
 
 # Fund Management System
-The purpose of this assessment is to evaluate the candidate's proficiency as a backend developer with a focus on Python and their understanding of building and working  with RESTful APIs. The assessment aims to assess the candidate's ability to design, develop, and maintain scalable and efficient backend solutions for a fund management  company.
+The purpose of this assessment is to evaluate the candidate's proficiency as a backend developer with a focus on Python and their understanding of building and working  with RESTful APIs. The assessment aims to assess the candidate's ability to design, develop, and maintain scalable and efficient backend solutions for a fund management  company. <br/>
 For each task, please access these files to evaluate:<br/>
 Task 1: [fundapp/models.py](https://github.com/asyraphile/fund_mgt_sys/blob/main/fundapp/models.py) <br/>
 Task 2: [fundapp/views.py](https://github.com/asyraphile/fund_mgt_sys/blob/main/fundapp/views.py) <br/>
