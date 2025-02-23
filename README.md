@@ -82,5 +82,5 @@ This endpoint will delete the fund by id provided in the parameter. Please repla
 ##Run Unit Test
 In order to run unit test for this system, you will need to complete the installation steps.
 <br/>
-<b>To run the unit test that I have wrote in fundapp/tests.py, please ensure the developement server is not running. If it is running, you may cancel the process in the terminal by pressing Ctrl + C.</b><br/>
-<b>Then run "python manage.py test --verbosity=2</b>
+<b>To run the unit test that I have wrote in fundapp/tests.py, please ensure the developement server is not running. If it is running, you may cancel the process in the terminal by pressing Ctrl + C.</b><br/><br/>
+<b>Then run "python manage.py test --verbosity=2"</b>
