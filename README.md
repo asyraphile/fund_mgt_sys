@@ -72,9 +72,15 @@ This endpoint will update performance of the fund by id given in the parameter. 
 ![alt text](screenshots/image_5.png) <br/>
 <b>Sample Response</b>: <br/>
 ![alt text](screenshots/image_6.png)<br/>
-### 2. 5. http://localhost:8000/delete/fund-id/ - Delete Fund by Id
+### 5. http://localhost:8000/delete/fund-id/ - Delete Fund by Id
 ### How to interact:
 This endpoint will delete the fund by id provided in the parameter. Please replace the uuid with the existing id in endpoint 1 or 3.<br/>
 <b>Sample Request</b>: http://localhost:8000/delete/58231c71-8b97-4a1d-9184-adfedfe53038/ <br/>METHOD: DELETE<br/>
 <b>Sample Response</b>: <br/>
 ![alt text](screenshots/image_7.png) <br/>
+
+##Run Unit Test
+In order to run unit test for this system, you will need to complete the installation steps.
+<br/>
+<b>To run the unit test that I have wrote in fundapp/tests.py, please ensure the developement server is not running. If it is running, you may cancel the process in the terminal by pressing Ctrl + C.</b><br/>
+<b>Then run "python manage.py test --verbosity=2</b>
