@@ -45,23 +45,29 @@ Quit the server with CTRL-BREAK.<br/>
 ### 1. http://localhost:8000/all/ - List all funds
 ### How to interact:
 This endpoint will display all funds that have been registered into the database.<br/>
-<b>Sample Request</b>: http://localhost:8000/all/ METHOD: GET<br/>
+<b>Sample Request</b>: http://localhost:8000/all/ <br/>METHOD: GET<br/>
 <b>Sample Response</b>: <br/>
 ![alt text](screenshots/image.png)<br/>
 ### 2. http://localhost:8000/fund/fund-id/ - Get Fund by Id
 ### How to interact:
 This endpoint will display a specific fund by id provided in the parameter. Please replace the uuid with the id provided in endpoint 1.<br/>
-<b>Sample Request</b>: http://localhost:8000/fund/f3903f1f-03eb-4a7e-bd79-8ef3f3c83034/ METHOD: GET<br/>
+<b>Sample Request</b>: http://localhost:8000/fund/f3903f1f-03eb-4a7e-bd79-8ef3f3c83034/ <br/>METHOD: GET<br/>
 <b>Sample Response</b>: <br/>
 ![alt text](screenshots/image_2.png) <br/>
 ### 3. http://localhost:8000/create/ - Create a Fund
 ### How to interact:
 This endpoint will create fund based on the data given in request body.<br/>
-<b>Sample Request</b>: http://localhost:8000/create/ METHOD: POST<br/>
+<b>Sample Request</b>: http://localhost:8000/create/ <br/>METHOD: POST<br/>
 <b>Sample Body(json)</b>: <br/>
 ![alt text](screenshots/image_3.png) <br/>
 <b>Sample Response</b>: <br/>
 ![alt text](screenshots/image_4.png) <br/>
-3. http://localhost:8000/create/ on POST
-4. http://localhost:8000/update_performance/fund-id/ on PUT
+### http://localhost:8000/update_performance/fund-id/ - Update performance of fund by Id
+### How to interact:
+This endpoint will update performance of the fund by id given in the parameter. Please replace the id of the fund existing/newly created fund in endpoint 1 or endpoint 3.<br/>
+<b>Sample Request</b>: http://localhost:8000/update_performance/58231c71-8b97-4a1d-9184-adfedfe53038/ <br/>METHOD: PUT<br/>
+<b>Sample Body(json)</b>: <br/>
+![alt text](image_5.png) <br/>
+<b>Sample Response</b>: <br/>
+![alt text](screenshots/image_4.png) <br/>
 5. http://localhost:8000/delete/fund-id/ on DELETE
